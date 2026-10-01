@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #09090b;
+  color: #fff;
+  font-family: system-ui, Arial, Helvetica, sans-serif;
+}
+
+/* /board sets .obs on <html> when ?transparent=1 so OBS can key the background out */
+html.obs,
+html.obs body {
+  background: transparent !important;
+}
+
+@keyframes whammy {
+  0%, 100% { filter: brightness(1); box-shadow: 0 0 0 rgba(255, 0, 0, 0); }
+  50% { filter: brightness(1.9); box-shadow: 0 0 22px 6px rgba(255, 40, 40, 0.85); }
+}
+@keyframes landed {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.18); }
+  100% { transform: scale(1.06); }
+}
+
+@layer utilities {
+  .animate-whammy { animation: whammy 0.45s ease-in-out infinite; }
+  .animate-landed { animation: landed 0.5s ease-out both; }
+}
